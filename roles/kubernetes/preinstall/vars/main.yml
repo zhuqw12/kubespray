@@ -11,21 +11,21 @@ pkgs:
   bash-completion: []
   conntrack:
     - "{{ ansible_os_family in ['Debian', 'RedHat'] }}"
-    - "{{ ansible_distribution != 'openEuler' }}"
+    - "{{ ansible_distribution != 'openEuler' and ansible_distribution != 'CULinux Enterprise Edition' }}"
     - "{{ 'k8s_cluster' in group_names }}"
   conntrack-tools:
-    - "{{ ansible_os_family == 'Suse' or ansible_distribution in ['Amazon', 'openEuler'] }}"
+    - "{{ ansible_os_family == 'Suse' or ansible_distribution in ['Amazon', 'openEuler', 'CULinux Enterprise Edition' ] }}"
     - "{{ 'k8s_cluster' in group_names }}"
   container-selinux:
     - "{{ ansible_os_family == 'RedHat' }}"
     - "{{ 'k8s_cluster' in group_names }}"
   curl: []
   device-mapper:
-    - "{{ ansible_os_family == 'Suse' or ansible_distribution == 'openEuler' }}"
+    - "{{ ansible_os_family == 'Suse' or ansible_distribution == 'openEuler' or ansible_distribution == 'CULinux Enterprise Edition' }}"
     - "{{ 'k8s_cluster' in group_names }}"
   device-mapper-libs:
     - "{{ ansible_os_family == 'RedHat' }}"
-    - "{{ ansible_distribution != 'openEuler' }}"
+    - "{{ ansible_distribution != 'openEuler' and ansible_distribution != 'CULinux Enterprise Edition' }}"
   e2fsprogs: []
   ebtables: []
   gnupg:

@@ -86,10 +86,12 @@ docker_containerd_version: 1.6.32
 
 # gcr and kubernetes image repo define
 gcr_image_repo: "gcr.io"
-kube_image_repo: "registry.k8s.io"
+kube_image_repo: "m.daocloud.io/registry.k8s.io"
+#kube_image_repo: "registry.aliyuncs.com/google_containers"
 
 # docker image repo define
-docker_image_repo: "docker.io"
+#docker_image_repo: "docker.io"
+docker_image_repo: "m.daocloud.io/docker.io"
 
 # quay image repo define
 quay_image_repo: "quay.io"
@@ -162,7 +164,7 @@ scheduler_plugins_version: "{{ scheduler_plugins_supported_versions[kube_major_v
 
 yq_version: "v4.42.1"
 
-github_url: https://github.com
+github_url: https://github.moeyy.xyz/https://github.com
 dl_k8s_io_url: https://dl.k8s.io
 storage_googleapis_url: https://storage.googleapis.com
 get_helm_url: https://get.helm.sh
@@ -295,6 +297,7 @@ coredns_version: "{{ 'v1.11.3' if (kube_version is version('v1.30.5', '>=')) els
 coredns_image_is_namespaced: "{{ (coredns_version is version('v1.7.1', '>=')) }}"
 
 coredns_image_repo: "{{ kube_image_repo }}{{ '/coredns/coredns' if (coredns_image_is_namespaced | bool) else '/coredns' }}"
+#coredns_image_repo: "{{ kube_image_repo }}/coredns"
 coredns_image_tag: "{{ coredns_version if (coredns_image_is_namespaced | bool) else (coredns_version | regex_replace('^v', '')) }}"
 
 nodelocaldns_version: "1.22.28"
@@ -306,8 +309,10 @@ dnsautoscaler_image_repo: "{{ kube_image_repo }}/cpa/cluster-proportional-autosc
 dnsautoscaler_image_tag: "{{ dnsautoscaler_version }}"
 
 scheduler_plugins_controller_image_repo: "{{ kube_image_repo }}/scheduler-plugins/controller"
+#scheduler_plugins_controller_image_repo: "{{ kube_image_repo }}/kube-controller-manager"
 scheduler_plugins_controller_image_tag: "{{ scheduler_plugins_version }}"
 scheduler_plugins_scheduler_image_repo: "{{ kube_image_repo }}/scheduler-plugins/kube-scheduler"
+#scheduler_plugins_scheduler_image_repo: "{{ kube_image_repo }}/kube-scheduler"
 scheduler_plugins_scheduler_image_tag: "{{ scheduler_plugins_version }}"
 
 registry_version: "2.8.1"
