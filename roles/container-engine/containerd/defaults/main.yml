@@ -113,6 +113,7 @@ containerd_supported_distributions:
   - "UnionTech"
   - "UniontechOS"
   - "openEuler"
+  - "CULinux Enterprise Edition"
 
 # Enable container device interface
 enable_cdi: false
